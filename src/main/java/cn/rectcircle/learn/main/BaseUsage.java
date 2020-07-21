@@ -30,6 +30,9 @@ public class BaseUsage {
         dispatcher.register(BaseEventType.HI, (BaseEvent e) -> {
             LOG.info("Hi " + e.getWord());
         });
+        dispatcher.register(BaseEventType.class, (BaseEvent e) -> {
+            LOG.info("通过 class 注册 " + e.getWord());
+        });
 
         // 启动事件循环
         dispatcher.serviceStart();

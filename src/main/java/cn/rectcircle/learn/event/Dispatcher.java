@@ -15,9 +15,17 @@ public interface Dispatcher {
     <T extends Enum<T>, E extends Event<T>> void dispatchEvent(E event);
 
     /**
-     * 注册一个消息
+     * 针对一种事件类型，注册一个消息处理器
      * @param eventType 事件类型
      * @param handler 事件处理器
      */
     <T extends Enum<T>, E extends Event<T>> void register(T eventType, EventHandler<T, E> handler);
+
+    /**
+     * 针对一种事件类型的类型，注册一个消息处理器，即所有该 class 的类型都会触发该处理器
+     * 
+     * @param eventTypeClazz 事件类型的类型
+     * @param handler        事件处理器
+     */
+    <T extends Enum<T>, E extends Event<T>> void register(Class<T> eventTypeClazz, EventHandler<T, E> handler);
 }
